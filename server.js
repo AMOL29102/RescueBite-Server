@@ -14,8 +14,14 @@ db.connect();
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Configure CORS to allow all origins
+app.use(cors({
+  origin: '*', // Allows all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // Allow cookies to be sent
+}));
+
 app.use(express.json());
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const jwtSecret = "your_jwt_secret";
