@@ -24,6 +24,9 @@ app.use(cors({
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Handle preflight requests
+app.options('*', cors());
+
 const jwtSecret = "your_jwt_secret";
 
 // const hashPassword = async (password) => {
