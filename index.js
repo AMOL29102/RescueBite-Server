@@ -66,6 +66,10 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+app.use('/',(req,res)=>{
+  res.json({message:"hello server!!"})
+})
+
 app.post("/consumer_signup", async (req, res) => {
   const { mobile_no, name, mail, pincode, password } = req.body;
   try {
