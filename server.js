@@ -4,39 +4,26 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 // const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
-
 const db = require("./config");
 require("dotenv").config();
 
-db.connect();
 
+
+db.connect();
 const app = express();
 const port = process.env.PORT || 3001;
 
+app.use(cors());
 // Configure CORS to allow all origins
-app.use(cors({
-  origin: '*', // Allows all origins
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true // Allow cookies to be sent
-}));
 
 app.use(express.json());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Handle preflight requests
-app.options('*', cors());
+
 
 const jwtSecret = "your_jwt_secret";
 
-// const hashPassword = async (password) => {
-//   const saltRounds = 10;
-//   return await bcrypt.hash(password, saltRounds);
-// };
-
-// const comparePassword = async (password, hash) => {
-//   return await bcrypt.compare(password, hash);
-// };
 
 const generateToken = (user) => {
   return jwt.sign(
