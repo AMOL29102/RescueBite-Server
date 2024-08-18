@@ -15,7 +15,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.options('*', (req, res) => {
-  res.set('Access-Control-Allow-Origin', 'http://localhost:5173'); // or your CORS origin
+  res.set('Access-Control-Allow-Origin', 'https://rescue-bite.vercel.app'); // or your CORS origin
   res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.sendStatus(200);
