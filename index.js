@@ -14,22 +14,21 @@ db.connect();
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Explicitly handle OPTIONS requests
 app.options('*', (req, res) => {
-  res.set('Access-Control-Allow-Origin', 'https://rescue-bite.vercel.app'); // or your CORS origin
-  res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.sendStatus(200);
+  res.setHeader('Access-Control-Allow-Origin', 'https://rescue-bite.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.sendStatus(200); // Important: Ensure this is 200 OK
 });
 
-
-
+// CORS middleware
 app.use(cors({
-  origin: ['https://rescue-bite.vercel.app', 'http://localhost:5173'],
+  origin: 'https://rescue-bite.vercel.app', // No trailing slash
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
-
 app.use(express.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
