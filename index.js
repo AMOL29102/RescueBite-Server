@@ -14,13 +14,21 @@ db.connect();
 const app = express();
 const port = process.env.PORT || 3001;
 
+app.options('*', (req, res) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:5173'); // or your CORS origin
+  res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.sendStatus(200);
+});
+
+
+
 app.use(cors({
-  origin: 'https://rescue-bite.vercel.app',
+  origin: ['https://rescue-bite.vercel.app', 'http://localhost:5173'],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
-// Configure CORS to allow all origins
 
 app.use(express.json());
 
