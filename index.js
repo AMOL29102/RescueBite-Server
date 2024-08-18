@@ -15,7 +15,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.options('*', (req, res) => {
-  res.set('Access-Control-Allow-Origin', 'https://rescue-bite.vercel.app'); // or your CORS origin
+  res.set('Access-Control-Allow-Origin', 'https://rescue-bite.vercel.app/'); // or your CORS origin
   res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.sendStatus(200);
@@ -24,7 +24,7 @@ app.options('*', (req, res) => {
 
 
 app.use(cors({
-  origin: ['https://rescue-bite.vercel.app', 'http://localhost:5173'],
+  origin: ['https://rescue-bite.vercel.app/', 'http://localhost:5173'],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
