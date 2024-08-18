@@ -1,3 +1,4 @@
+
 const express = require("express");
 // const pg = require("pg");
 const cors = require("cors");
@@ -14,7 +15,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use(cors({
-  origin: '*',
+  origin: 'https://rescue-bite.vercel.app',
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
